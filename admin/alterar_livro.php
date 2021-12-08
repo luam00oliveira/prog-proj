@@ -1,5 +1,5 @@
 <?php
-    include "menu.php";
+    include "verifica_usuario.php";
     
     // import dao
     require_once "src/dao/LivroDAO.php";
@@ -42,6 +42,6 @@
     $livroDAO = new LivroDAO();
     $livroDAO->alterarLivro($livro, $genero, $autor, $temImagem);
 
-    include "rodape.php";
+    include "components/rodape.php";
 ?>
 

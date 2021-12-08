@@ -17,5 +17,21 @@ class UsuarioDAO{
 
     $sql = "INSERT INTO Usuario(nome,sobrenome,email,login,password,rua,numero,bairro,cep,telefone)
       VALUES($usuario->getNome(),$usuario->getNome(),$usuario)";
+    
+    return $conexao->exec($sql);
+  }
+
+  function logarUsuario(String $email, String $senha){
+    $conexao = ConexaoBD::getConexao();
+    
+    $senha = md5($senha);
+
+    $sql = "SELECT id_usuario
+    FROM usuario
+    WHERE email='{$email}' and password='{$senha}'";
+
+    $stmt = $conexao->query($sql);
+
+    return $stmt->fetchColumn();
   }
 }

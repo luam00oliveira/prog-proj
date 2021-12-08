@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+require_once __DIR__ . "/../utils.php";
+?>
+
 
 <head>
     <meta charset="utf-8">

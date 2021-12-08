@@ -1,4 +1,4 @@
-<?php include "menu.php"; ?>
+<?php include "verifica_usuario.php"; ?>
 
 <h2>Pesquisar Livros</h2>
 <form action="form_lista_livros.php">
@@ -8,4 +8,4 @@
         <button type="submit" id="botaoId">Pesquisar</button>
 </form>
 
-<?php include "rodape.php"; ?>
+<?php include "components/rodape.php"; ?>

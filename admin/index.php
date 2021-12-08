@@ -1,5 +1,5 @@
 <?php
-    include "menu.php";
+    include "verifica_usuario.php";
 ?>
 
         <!-- CONTEÚDO -->
@@ -16,5 +16,5 @@
         <!-- FIM CONTEÚDO -->
 
 <?php
-    include "rodape.php";
+    include "components/components/rodape.php";
 ?>

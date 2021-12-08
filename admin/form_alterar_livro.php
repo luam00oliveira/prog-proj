@@ -1,5 +1,5 @@
 <?php
-    include "menu.php";
+    include "verifica_usuario.php";
     // import dao
     require_once "src/dao/LivroDAO.php";
     require_once "src/model/Funcoes.php";
@@ -317,6 +317,6 @@
 </div>
 
 <?php
-    include "rodape.php";
+    include "components/rodape.php";
 ?>
 

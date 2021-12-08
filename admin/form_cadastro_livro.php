@@ -1,6 +1,6 @@
 <?php
 
-    include "menu.php";
+    include "verifica_usuario.php";
 
     require_once "src/dao/AutorDAO.php";
     require_once "src/model/Autor.php";
@@ -271,6 +271,6 @@
 
     <?php
 
-    include "rodape.php";
+    include "components/rodape.php";
 
 ?>

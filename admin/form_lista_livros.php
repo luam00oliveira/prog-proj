@@ -1,5 +1,5 @@
 <?php
-    include "menu.php";
+    include "verifica_usuario.php";
     
     require_once "src/dao/LivroDAO.php";
 
@@ -45,5 +45,5 @@
 
 <?php
 
-    include "rodape.php";
+    include "components/rodape.php";
 ?>

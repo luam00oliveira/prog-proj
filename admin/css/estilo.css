@@ -83,3 +83,15 @@ th {
 #genero-tags label:first-child{
     margin: 0;
 }
+
+
+/* Login */
+
+#login-form{
+    max-width: 700px;
+}
+
+.h-100{
+    min-height: 100vh;
+}
+

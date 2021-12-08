@@ -1,5 +1,5 @@
 <?php
-    include "menu.php";
+    include "verifica_usuario.php";
     
     require_once "src/dao/LivroDAO.php";
 
@@ -9,5 +9,5 @@
     $livrosDAO->deletarLivro($id);
 
 
-    include "rodape.php";
+    include "components/rodape.php";
 ?>

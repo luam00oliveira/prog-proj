@@ -33,7 +33,7 @@
                                         <p class="fs-6 resumo mb-5"><?=$livro['descricao']?>
                                         </p>
 
-                                        <h4 class="fw-bold">R$<?=$livro['preco']?></h4>
+                                        <h4 class="fw-bold">R$<?=number_format($livro['preco'],2,",",".")?></h4>
                                     </div>
 
                                     <div class="botoes-compra">

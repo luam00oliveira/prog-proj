@@ -36,7 +36,7 @@ if (isset($_GET['a'])) {
             $cesta[] = $item;
         }
         $_SESSION['cesta'] = $cesta;
-        $util->redirect('cesta.php');
+        $utils->redirect('cesta.php');
     } else if ($_GET['a'] == 'r') {
         $id = $_GET['id'];
         if ($cesta) {
@@ -46,7 +46,7 @@ if (isset($_GET['a'])) {
                     if ($_SESSION['cesta'][$i]['quantidade'] == 0) {
                         unset($_SESSION['cesta'][$i]);
                     }
-                    $util->redirect('cesta.php');
+                    $utils->redirect('cesta.php');
                 }
             }
         }
@@ -56,6 +56,7 @@ if (isset($_GET['a'])) {
 } else {
     $_SESSION['vazio'] = true;
 }
+
 ?>
 <main class="my-5">
     <div class="container">
@@ -83,7 +84,7 @@ if (isset($_GET['a'])) {
 
                     <tr class='border-bottom border-top '>
                         <td>
-                            <a href="produto.php?id=<?= $item['id'] ?>" ><img class=" my-2 item-img" src="data:image/png;base64, <?= base64_encode($item['imagem']) ?>" alt="Capa de <?= $item['titulo'] ?>"></a>
+                            <a href="produto.php?id=<?= $item['id'] ?>"><img class=" my-2 item-img" src="data:image/png;base64, <?= base64_encode($item['imagem']) ?>" alt="Capa de <?= $item['titulo'] ?>"></a>
 
                         </td>
                         <td class='align-top pt-4'>
@@ -95,7 +96,7 @@ if (isset($_GET['a'])) {
                             <p class=""><?= $item['quantidade'] ?></p>
                         </td>
                         <td>
-                            <p>R$<?= $item['preco'] ?></p>
+                            <p>R$<?= number_format($item['preco'], 2, ",", ".") ?></p>
                         </td>
                         <td>
                             <a href='cesta.php?a=r&id=<?= $item['id'] ?>'>Remover</a>
@@ -105,11 +106,12 @@ if (isset($_GET['a'])) {
                 <?php
                     $total += $item['preco'] * $item['quantidade'];
                 endforeach;
+                $_SESSION['cesta']['total'] = $total;
                 ?>
                 <tfoot>
                     <tr>
                         <td colspan="5" class="text-end">
-                            <h2 class='mt-3'>Total: R$<?= $total ?></h2>
+                            <h2 class='mt-3'>Total: R$<?= number_format($total, 2, ",", ".") ?></h2>
                         </td>
                     </tr>
                     <tr>

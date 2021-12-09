@@ -11,6 +11,14 @@
     }
 ?>
 
+    <h2>Pesquisar Livros</h2>
+    <form class="border-bottom mb-2" action="form_lista_livros.php">
+            <label for="pesquisaInput">Digite nome do autor ou título do livro:  </label>
+            <input type="text" name="pesquisa" id="pesquisaInput" class="input-padrao" size=50>
+                        
+            <button type="submit" id="botaoId">Pesquisar</button>
+    </form>
+
     <table>
         <tr>   
             <th>#</th>         
@@ -28,7 +36,7 @@
         <tr>
             <td><?=$livro['id']?></td>          
             <td><?=$livro['titulo']?></td>
-            <td>R$<?=$livro['preco']?></td>
+            <td>R$<?=number_format($livro['preco'],2,",",".")?></td>
             <td><?=$livro['quantidade']?></td>
             <td><?php echo ($livro['promocao']) ? "Ativo" : "Inativo" ?></td>      
             <td>

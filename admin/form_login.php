@@ -13,6 +13,16 @@
     <main class="d-flex align-items-center justify-content-center h-100">
         <form id="login-form" class="row py-5 px-4 rounded bg-primary" action="login.php" method="POST">
             <h1>Entrar</h1>
+
+            <?php
+                session_start();
+                if(isset($_SESSION['msg'])){
+            ?>
+            <p class="text-center bg-white rounded py-2"><?=$_SESSION['msg']?></p>
+            <?php
+                unset($_SESSION['msg']);
+                }
+            ?>
             <div class="mb-3 col-12 px-0">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">

@@ -1,6 +1,5 @@
 <?php
 include 'verifica_cliente.php';
-
 ?>
 
 <main>

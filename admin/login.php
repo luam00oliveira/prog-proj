@@ -12,8 +12,13 @@ $password = $_POST['password'];
 
 $_SESSION['usuarioId'] = $usuarioDAO->logarUsuario($email,$password);
 
+if($_SESSION['usuarioId']==null){
+    $_SESSION['msg'] = 'Email e/ou senha incorreto(s)!';
+    $utils->redirect('form_login.php');
+}else{
+    $utils->redirect('index.php');
+}
 
 
 
-$utils->redirect('index.php');
 

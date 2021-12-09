@@ -100,7 +100,7 @@ class LivroDAO{
     function pesquisarLivro(String $pesquisa){
         $conexao = ConexaoBD::getConexao();
 
-        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,
+        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,L.promocao,
         GROUP_CONCAT(A.nome, '') AS autor
         FROM livro L
         INNER JOIN autores Aus

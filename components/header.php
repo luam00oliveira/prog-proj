@@ -2,7 +2,7 @@
     require_once __DIR__ . "/../utils.php";
     session_start();
 
-    $util = new Utils();
+    $utils = new Utils();
 ?>
 
 <!DOCTYPE html>

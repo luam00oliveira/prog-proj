@@ -81,7 +81,7 @@
                                 </div>
                                 <a href="produto.php?id=<?=$livro['id']?>"
                                     class="preco text-decoration-none fs-5 fw-bold text-dark mb-3">
-                                    R$<?= $livro['preco']?>
+                                    R$<?=number_format($livro['preco'],2,",",".")?>
                                 </a>
                                 <a href="produto.php?id=<?=$livro['id']?>" class="btn btn-success w-100 ">Comprar</a>
                             </div>

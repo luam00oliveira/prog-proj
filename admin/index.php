@@ -1,7 +1,12 @@
 <?php
-    include "verifica_usuario.php";
+include "verifica_usuario.php";
+if(isset($_SESSION['msg'])){
 ?>
-
+    <p class="text-black"><strong><?=$_SESSION['msg']?></strong></p>
+<?php
+    unset($_SESSION['msg']);
+}
+?>
         <!-- CONTEÚDO -->
 
             
@@ -11,10 +16,10 @@
 
             <div class="line"></div>            
             
-    
+            
 
         <!-- FIM CONTEÚDO -->
 
 <?php
-    include "components/components/rodape.php";
+    include "components/rodape.php";
 ?>

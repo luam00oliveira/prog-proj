@@ -5,12 +5,12 @@ include "verifica_usuario.php";
 <form class="row" action="usuario_cadastro.php" method="post">
     <h1>Cadastro de usuário</h1>
     <?php
-        if(isset($_SESSION['msg'])){
+    if (isset($_SESSION['msg'])) {
     ?>
-    <p class="text-danger"><?=$_SESSION['msg']?></p>
+        <p class="text-danger"><?= $_SESSION['msg'] ?></p>
     <?php
         unset($_SESSION['msg']);
-        }
+    }
     ?>
     <div class="col-12">
         <label for="loginInput" class="control-label">Login</label>

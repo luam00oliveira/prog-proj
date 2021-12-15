@@ -1,7 +1,9 @@
 <?php
 
-class GeneroDAO{
-    function cadastrarGenero(Genero $genero){
+class GeneroDAO
+{
+    function cadastrarGenero(Genero $genero)
+    {
         $sql = "INSERT INTO genero(nome)
             VALUES('{$genero->getNome()}')";
 
@@ -9,9 +11,10 @@ class GeneroDAO{
         $conexao->exec($sql);
     }
 
-    function listarGeneros(){
+    function listarGeneros()
+    {
         $conexao = ConexaoBD::getConexao();
-        
+
         $sql = "SELECT *
         FROM genero
         ORDER BY nome ASC";
@@ -23,9 +26,10 @@ class GeneroDAO{
         return $generos;
     }
 
-    function obterIdNome(String $nome){
+    function obterIdNome(String $nome)
+    {
         $conexao = ConexaoBD::getConexao();
-        
+
         $sql = "SELECT id FROM genero WHERE nome LIKE '%$nome%'";
 
         $stmt = $conexao->query($sql);

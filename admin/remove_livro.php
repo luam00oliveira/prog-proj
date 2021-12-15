@@ -1,13 +1,12 @@
 <?php
-    include "verifica_usuario.php";
-    
-    require_once "src/dao/LivroDAO.php";
+include "verifica_usuario.php";
 
-    $livrosDAO = new LivroDAO();
-    $id = $_GET['id'];
+require_once "src/dao/LivroDAO.php";
 
-    $livrosDAO->deletarLivro($id);
+$livrosDAO = new LivroDAO();
+$id = $_GET['id'];
+
+$livrosDAO->deletarLivro($id);
 
 
-    include "components/rodape.php";
-?>
+include "components/rodape.php";

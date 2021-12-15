@@ -4,31 +4,31 @@ include 'components/header.php';
 require_once 'admin/src/dao/LivroDAO.php';
 //verificacao se cesta esta vazia
 
-if(!isset($_SESSION['cesta']) or sizeof($_SESSION['cesta']) == 0){
-    $_SESSION['vazio']=true;
+if (!isset($_SESSION['cesta']) or sizeof($_SESSION['cesta']) == 0) {
+    $_SESSION['vazio'] = true;
 }
 
-if(isset($_GET['a']) or !$_SESSION['vazio']){
+if (isset($_GET['a']) or !$_SESSION['vazio']) {
     $cesta = $_SESSION['cesta'];
     if (isset($_GET['a'])) {
         if ($_GET['a'] == 'i') {
             $id = $_GET['id'];
             $exists = false;
             if ($cesta) {
-                for ($i = array_key_first($cesta)??0; $i <= array_key_last($cesta)?? 0; $i++) {
+                for ($i = array_key_first($cesta) ?? 0; $i <= array_key_last($cesta) ?? 0; $i++) {
                     if ($cesta[$i]['id'] == $id) {
                         $cesta[$i]['quantidade'] += 1;
                         $exists = true;
-                        $_SESSION['vazio']=false;
+                        $_SESSION['vazio'] = false;
                     }
                 }
             }
-    
+
             if (!$exists) {
                 $livroDAO = new LivroDAO();
-    
+
                 $livro = $livroDAO->obterLivro($_GET['id']);
-    
+
                 $item = [
                     "id" => $_GET['id'],
                     "titulo" => $livro['titulo'],
@@ -38,9 +38,9 @@ if(isset($_GET['a']) or !$_SESSION['vazio']){
                     "quantidade" => 1,
                     "imagem" => $livro['imagem']
                 ];
-    
+
                 $cesta[] = $item;
-                $_SESSION['vazio']=false;
+                $_SESSION['vazio'] = false;
             }
             array_filter($cesta);
             $_SESSION['cesta'] = $cesta;

@@ -10,10 +10,10 @@ $usuario->setPassword($_POST['password']);
 
 $usuarioDAO = new UsuarioDAO();
 
-if($usuarioDAO->cadastrarUsuario($usuario)){
+if ($usuarioDAO->cadastrarUsuario($usuario)) {
     $_SESSION['msg'] = "Usuário cadastrado com sucesso";
     $utils->redirect('index.php');
-}else{
+} else {
     $_SESSION['msg'] = "Login já cadastrado com sucesso";
     $utils->redirect('form_usuario_cadastro.php');
 }

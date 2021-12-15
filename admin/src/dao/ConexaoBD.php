@@ -8,8 +8,8 @@ class ConexaoBD
         $conexao = new PDO(
             "mysql:host=localhost;dbname=airarvil",
             "root",
-            "coringa");
+            "coringa"
+        );
         return $conexao;
     }
-
 }

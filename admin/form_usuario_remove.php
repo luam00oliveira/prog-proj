@@ -3,7 +3,7 @@ include "verifica_usuario.php";
 
 if (isset($_SESSION['msg'])) {
 ?>
-    <p class="text-danger"><?=$_SESSION['msg']?></p>
+    <p class="text-danger"><?= $_SESSION['msg'] ?></p>
 <?php
     unset($_SESSION['msg']);
 }

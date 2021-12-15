@@ -8,12 +8,12 @@ include "components/header.php";
                 <div>
                     <h1 class="text-center">Entre na sua conta</h1>
                     <?php
-                        if(isset($_SESSION['msg'])){ 
+                    if (isset($_SESSION['msg'])) {
                     ?>
-                        <p class="text-center text-bold text-danger" ><strong><?=$_SESSION['msg']?></strong></p>
+                        <p class="text-center text-bold text-danger"><strong><?= $_SESSION['msg'] ?></strong></p>
                     <?php
                         unset($_SESSION['msg']);
-                        }
+                    }
                     ?>
                     <form id="loginForm" class="mx-auto" action="login.php" method="POST">
                         <div class="input-group flex-nowrap mb-3">

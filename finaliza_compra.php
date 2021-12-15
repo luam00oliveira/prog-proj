@@ -1,11 +1,10 @@
 <?php
-  require "src/dao/CompraDAO.php";
+require "src/dao/CompraDAO.php";
+include 'verifica_cliente.php';
+$compraDAO = new CompraDAO();
 
-  session_start();
-  $compraDAO = new CompraDAO();
+$compraDAO->cadastrarCompra($_SESSION);
 
-  $resp = $compraDAO->cadastrarCompra($_SESSION);
+unset($_SESSION['cesta']);
 
-  if($resp>0){
-
-  }
+$utils->redirect('agradecimento.php');

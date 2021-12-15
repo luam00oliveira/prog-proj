@@ -29,7 +29,7 @@
             <div class="d-flex">
                 <form class="d-none align-self-center me-4 d-lg-flex" action="catalogo.php">
                     <button class="btn btn-outline-light me-2" type="submit">Search</button>
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control" name="s" placeholder="Search" type="search" placeholder="Search" aria-label="Search">
                 </form>
                 <a href="cesta.php" class=" align-self-center header-icons me-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-cart header-icons-svg" viewBox="0 0 16 16">
@@ -59,9 +59,9 @@
                                     <a class="nav-link px-3 text-white " href="catalogo.php">Catálogo</a>
                                 </li>
                             </ul>
-                            <form class=" d-flex align-self-center">
+                            <form class="d-flex align-self-center">
                                 <button class="btn btn-outline-light me-2" type="submit">Search</button>
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control" name="s" type="search" placeholder="Search" aria-label="Search">
                             </form>
                         </div>
                     </div>

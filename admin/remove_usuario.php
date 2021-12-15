@@ -9,12 +9,12 @@ $password = $_POST['password'];
 
 
 
-if($usuarioDAO->removerUsuario($id, $password)){
+if ($usuarioDAO->removerUsuario($id, $password)) {
     $_SESSION['msg'] = "Usuário removido com sucesso.";
     $utils->redirect('form_lista_usuarios.php');
-}else{
+} else {
     $_SESSION['msg'] = "Senha incorrreta. Tente novamente.";
-    $utils->redirect('form_usuario_remove.php?id='.$id);
+    $utils->redirect('form_usuario_remove.php?id=' . $id);
 }
 
 

@@ -3,19 +3,22 @@
 require_once __DIR__ . "/../model/Autor.php";
 require_once "ConexaoBD.php";
 
-class AutorDAO{
+class AutorDAO
+{
 
-    function cadastrarAutor(Autor $autor){
+    function cadastrarAutor(Autor $autor)
+    {
         $sql = "INSERT INTO autor(nome)
         VALUES('{$autor->getNome()}')";
-            
+
         $conexao = ConexaoBD::getConexao();
         $conexao->exec($sql);
     }
 
-    function listarAutores(){
+    function listarAutores()
+    {
         $conexao = ConexaoBD::getConexao();
-        
+
         $sql = "SELECT *
         FROM autor
         ORDER BY nome ASC";
@@ -27,9 +30,10 @@ class AutorDAO{
         return $autores;
     }
 
-    function obterIdNome(String $nome){
+    function obterIdNome(String $nome)
+    {
         $conexao = ConexaoBD::getConexao();
-        
+
         $sql = "SELECT id FROM autor WHERE nome LIKE '%$nome%'";
 
         $stmt = $conexao->query($sql);
@@ -38,5 +42,4 @@ class AutorDAO{
 
         return $id;
     }
-    
 }

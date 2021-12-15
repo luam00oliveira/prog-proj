@@ -105,7 +105,7 @@ class UsuarioDAO
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function removerUsuario(String $id,String $password)
+  function removerUsuario(String $id, String $password)
   {
     $conexao = ConexaoBD::getConexao();
 
@@ -115,14 +115,14 @@ class UsuarioDAO
       WHERE  id = '{$id}' and password = '{$password}'";
 
     $stmt = $conexao->query($sql);
-    if($stmt->fetchColumn()){
+    if ($stmt->fetchColumn()) {
       $sql = "DELETE FROM USUARIO
       WHERE  id = '{$id}'";
 
       $conexao->exec($sql);
-      
+
       return 1;
-    }else{
+    } else {
       return 0;
     }
   }

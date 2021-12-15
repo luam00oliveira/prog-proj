@@ -2,59 +2,64 @@
 include 'components/header.php';
 
 require_once 'admin/src/dao/LivroDAO.php';
+//verificacao se cesta esta vazia
 
+if(!isset($_SESSION['cesta']) or sizeof($_SESSION['cesta']) == 0){
+    $_SESSION['vazio']=true;
+}
 
-$cesta = $_SESSION['cesta'];
-if (isset($_GET['a'])) {
-    if ($_GET['a'] == 'i') {
-        $id = $_GET['id'];
-        $exists = false;
-        if ($cesta) {
-            for ($i = 0; $i <= array_key_last($cesta ?? 0); $i++) {
-                if ($cesta[$i]['id'] == $id) {
-                    $cesta[$i]['quantidade'] += 1;
-                    $exists = true;
+if(isset($_GET['a']) or !$_SESSION['vazio']){
+    $cesta = $_SESSION['cesta'];
+    if (isset($_GET['a'])) {
+        if ($_GET['a'] == 'i') {
+            $id = $_GET['id'];
+            $exists = false;
+            if ($cesta) {
+                for ($i = array_key_first($cesta)??0; $i <= array_key_last($cesta)?? 0; $i++) {
+                    if ($cesta[$i]['id'] == $id) {
+                        $cesta[$i]['quantidade'] += 1;
+                        $exists = true;
+                        $_SESSION['vazio']=false;
+                    }
                 }
             }
-        }
-
-        if (!$exists) {
-            $livroDAO = new LivroDAO();
-
-            $livro = $livroDAO->obterLivro($_GET['id']);
-
-            $item = [
-                "id" => $_GET['id'],
-                "titulo" => $livro['titulo'],
-                "autor" => $livro['autor'],
-                "preco" => $livro['preco'],
-                "editora" => $livro['editora'],
-                "quantidade" => 1,
-                "imagem" => $livro['imagem']
-            ];
-
-            $cesta[] = $item;
-        }
-        $_SESSION['cesta'] = $cesta;
-        $utils->redirect('cesta.php');
-    } else if ($_GET['a'] == 'r') {
-        $id = $_GET['id'];
-        if ($cesta) {
-            for ($i = 0; $i <= array_key_last($cesta ?? 0); $i++) {
-                if ($_SESSION['cesta'][$i]['id'] == $id) {
-                    $_SESSION['cesta'][$i]['quantidade']--;
-                    if ($_SESSION['cesta'][$i]['quantidade'] == 0) {
-                        unset($_SESSION['cesta'][$i]);
+    
+            if (!$exists) {
+                $livroDAO = new LivroDAO();
+    
+                $livro = $livroDAO->obterLivro($_GET['id']);
+    
+                $item = [
+                    "id" => $_GET['id'],
+                    "titulo" => $livro['titulo'],
+                    "autor" => $livro['autor'],
+                    "preco" => $livro['preco'],
+                    "editora" => $livro['editora'],
+                    "quantidade" => 1,
+                    "imagem" => $livro['imagem']
+                ];
+    
+                $cesta[] = $item;
+                $_SESSION['vazio']=false;
+            }
+            array_filter($cesta);
+            $_SESSION['cesta'] = $cesta;
+            $utils->redirect('cesta.php');
+        } else if ($_GET['a'] == 'r') {
+            $id = $_GET['id'];
+            if ($cesta) {
+                for ($i = 0; $i <= array_key_last($cesta) ?? 0; $i++) {
+                    if ($_SESSION['cesta'][$i]['id'] == $id) {
+                        $_SESSION['cesta'][$i]['quantidade']--;
+                        if ($_SESSION['cesta'][$i]['quantidade'] == 0) {
+                            unset($_SESSION['cesta'][$i]);
+                        }
+                        $utils->redirect('cesta.php');
                     }
-                    $utils->redirect('cesta.php');
                 }
             }
         }
     }
-} else if ($cesta) {
-    $_SESSION['vazio'] = false;
-} else {
-    $_SESSION['vazio'] = true;
 }
 
 ?>
@@ -106,7 +111,8 @@ if (isset($_GET['a'])) {
                 <?php
                     $total += $item['preco'] * $item['quantidade'];
                 endforeach;
-                $_SESSION['cesta']['total'] = $total;
+                $_SESSION['total'] = $total;
+
                 ?>
                 <tfoot>
                     <tr>

@@ -26,8 +26,7 @@ class ClienteDAO{
     
     $sql = "SELECT id, email, nome
     FROM cliente
-    WHERE email = '{$email}'
-    AND password = '{$password}'";
+    WHERE email = '{$email}' AND password = '{$password}'";
 
     $stmt = $conexao->query($sql);
 
